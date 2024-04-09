@@ -32,8 +32,9 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Greeting() {
-    var email by remember { mutableStateOf(TextFieldValue()) }
-    var password by remember { mutableStateOf(TextFieldValue()) }
+    var text by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -54,22 +55,29 @@ fun Greeting() {
         ) {
             TextField(
                 value = email,
-                onValueChange = {text = it},
+                onValueChange = {email = it},
                 label = {Text("Введіть email")}
             )
             TextField(
-                value = text1,
+                value = password,
                 onValueChange = {password = it},
-                label = {Text("Введіть email")}
+                label = {Text("Введіть password")}
             )
-            Button(onClick = { /*TODO*/ }) {
+            Text(text = text)
+            Button(onClick = {
+                if(text1 != "" && text2 != ""){
+                    text = "Успішна авторизація"
+                }
+                else{
+                    text = "Помилка авторизації"
+                }
+            }) {
                 Text("Sing In")
                 
             }
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
