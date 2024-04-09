@@ -22,25 +22,44 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting()
                 }
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Greeting() {
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        text = "Sing In",
+                        fontSize = 24.sp
+                    )
+                })
+        }
+    ){
+        paddingValues ->
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(paddingValues)
+        ) {
+
+        }
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     IPZ_CW_1_2_Davyduk_RomanTheme {
-        Greeting("Android")
+        Greeting()
     }
 }
